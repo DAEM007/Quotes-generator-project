@@ -1,0 +1,49 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(188, 188, 246);
+    color: rgb(17, 16, 16);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+.container {
+    text-align: center;
+    background-color: #fff;
+    /* Revise rem and other units */
+    padding: 2rem;
+    /* Revise flex properties */
+    flex: 0 0 80%;
+}
+
+#quote-btn {
+    border: none;
+    color: #fff;
+    background-color: rgb(79, 79, 241);
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#quote-btn:hover {
+    color: rgb(79, 79, 241);
+    background-color: #fff;
+}
+
+blockquote {
+    background: rgb(232, 232, 248);
+    /* border: 2px solid rgb(79, 79, 241); */
+    border-left: 10px solid rgb(79, 79, 241);
+    margin: 1.5rem;
+    padding: 0.5rem;
+    font-family: cursive;
+}
+
+#quote-author {
+    color: rgb(79, 79, 241);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
