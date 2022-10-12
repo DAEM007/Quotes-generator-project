@@ -81,14 +81,53 @@ const quotes = [
     }
 ]
 
-// REFERNCES FOR DOM MANIPULATION
+// REFERENCES FOR DOM MANIPULATION
 const quoteBtn = document.querySelector('#quote-btn');
-const quote = document.querySelector('#quote');
+const quoteText = document.querySelector('#quote');
 const quoteAuthor = document.querySelector('#quote-author');
 
-quoteBtn.addEventListener('click', () => {
-    let randomNumber = Math.floor(Math.random() * quotes.length);
-    // console.log(quotes[randomNumber]);
-    quote.innerHTML = quotes[randomNumber].quote;
-    quoteAuthor.innerHTML = quotes[randomNumber].name;
+//create a function getQuotes to fetch the quotes from the given API
+const getQuotes = async () => {
+    const request = await fetch('https://type.fit/api/quotes');
+    const data = await request.json();
+    console.log(data);
+    let randomNumber = Math.floor(Math.random() * data.length);
+    // console.log(`{quote: ${data[randomNumber].text}
+    //              author: ${data[randomNumber].author}}
+    // `);
+    return {
+        quote: data[randomNumber].text,
+        author: data[randomNumber].author
+    };
+}
+
+//create a function to update the UI
+const updateUI = (data) => {
+    // Assign variables to the data you want to use
+    const { quote, author } = data;
+    console.log(data);
+    //output this data assigned to the DOM
+    quoteText.innerHTML = quote;
+    quoteAuthor.innerHTML = author;
+
+}
+
+// Click event for DOM manipulation
+quoteBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    //call the get quotes here with its success/error handler
+    getQuotes()
+        .then((data) => {
+            // console.log(data);
+            updateUI(data);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+
 })
+
+
+
+    
